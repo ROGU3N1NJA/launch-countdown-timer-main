@@ -1,0 +1,315 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Primary Colors */
+  --grey-blue: rgb(132, 134, 169);
+  --soft-red: hsl(345, 95%, 68%);
+
+  /* Neutral */
+  --white: hsl(0, 0%, 100%);
+  --dark-desaturated-blue: rgb(52, 54, 80);
+  --darker-desaturated-blue: hsl(240, 21%, 22%);
+  --dark-blue: hsl(235, 15%, 14%);
+  --black-blue: hsl(235, 18%, 12%);
+
+  /* Values */
+  --card-padding: 17.5px;
+  --negative-card-padding: calc(var(--card-padding) * -1);
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  font-size: 14px;
+  font-family: "Red Hat Text", sans-serif;
+  text-transform: uppercase;
+  background-image: url(./images/pattern-hills.svg), url(./images/bg-stars.svg), linear-gradient(to bottom, var(--dark-blue), #241c2b);
+  background-repeat: no-repeat;
+  background-size: 100vw, cover;
+  background-position: bottom, center;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 3fr;
+}
+
+/* -----------
+    Header
+------------ */
+
+header {
+  place-self: center;
+  padding-inline: 30px;
+}
+
+header h1 {
+  letter-spacing: 0.75rem;
+  color: var(--white);
+  text-align: center;
+}
+
+/* -----------
+    Main
+------------ */
+
+main {
+  display: flex;
+  width: 100vw;
+  margin-top: 100px;
+  place-self: baseline center;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+main h2 {
+  font-size: 18px;
+  color: var(--grey-blue);
+  letter-spacing: 0.4rem;
+  text-indent: 0.4rem;
+  margin-block-end: 0;
+  margin-block-start: 0;
+  margin-inline-end: 0;
+  margin-inline-start: 0;
+}
+
+/* -----------
+    Countdown
+------------ */
+
+.countdown .card {
+  text-align: center;
+}
+.countdown .card:last-child {
+  margin-right: 0;
+}
+.countdown .figure {
+  position: relative;
+  float: left;
+  height: 160px;
+  width: 180px;
+  margin-bottom: 40px;
+  padding-block: var(--card-padding);
+  background-color: var(--dark-desaturated-blue);
+  border-radius: 10px;
+}
+
+.countdown .figure::after {
+  content: "";
+  position: absolute;
+  background-color: var(--black-blue);
+  margin-top: 12px;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  z-index: -1;
+  opacity: 0.9;
+}
+
+.countdown .figure:last-child {
+  margin-right: 0;
+}
+.countdown .figure > span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  font-size: 5.9rem;
+  font-weight: 700;
+  color: var(--soft-red);
+}
+.countdown .figure .top:after,
+.countdown .figure .bottom-back:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  border-bottom: 1px solid var(--dark-blue);
+}
+.countdown .figure .top {
+  filter: brightness(0.8);
+  z-index: 3;
+  margin-top: var(--negative-card-padding);
+  background-color: var(--dark-desaturated-blue);
+  transform-origin: 50% 100%;
+  -webkit-transform-origin: 50% 100%;
+  -moz-border-radius-topleft: 10px;
+  -webkit-border-top-left-radius: 10px;
+  border-top-left-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  -webkit-border-top-right-radius: 10px;
+  border-top-right-radius: 10px;
+  -moz-transform: perspective(200px);
+  -ms-transform: perspective(200px);
+  -webkit-transform: perspective(200px);
+  transform: perspective(200px);
+}
+.countdown .figure .bottom {
+  z-index: 1;
+}
+.countdown .figure .bottom:before {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: rgba(0, 0, 0, 0.02);
+}
+.countdown .figure .bottom-back {
+  z-index: 2;
+  margin-top: var(--negative-card-padding);
+  height: 50%;
+  overflow: hidden;
+  filter: brightness(0.8);
+  background-color: var(--dark-desaturated-blue);
+  -moz-border-radius-topleft: 10px;
+  -webkit-border-top-left-radius: 10px;
+  border-top-left-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  -webkit-border-top-right-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.countdown .figure .bottom-back span {
+  position: absolute;
+  top: var(--card-padding);
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.countdown .figure .top,
+.countdown .figure .top-back {
+  height: 50%;
+  padding-top: var(--card-padding);
+  overflow: hidden;
+  -moz-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.countdown .figure .top-back {
+  z-index: 4;
+  bottom: 0;
+  margin-top: 0;
+  background-color: var(--dark-desaturated-blue);
+  -webkit-transform-origin: 50% 0;
+  transform-origin: 50% 0;
+  -moz-transform: perspective(200px) rotateX(180deg);
+  -ms-transform: perspective(200px) rotateX(180deg);
+  -webkit-transform: perspective(200px) rotateX(180deg);
+  transform: perspective(200px) rotateX(180deg);
+  -moz-border-radius-bottomleft: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  -moz-border-radius-bottomright: 10px;
+  -webkit-border-bottom-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.countdown .figure .top-back span {
+  position: absolute;
+  top: calc(-100% + var(--card-padding));
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+/* -----------
+    Footer 
+------------ */
+
+footer {
+  position: absolute;
+  width: 25vh;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+footer svg {
+  color: var(--grey-blue);
+  cursor: pointer;
+}
+
+footer svg:hover,
+footer svg:focus-visible {
+  color: var(--soft-red);
+}
+
+/* -----------
+    Helpers
+------------ */
+
+.no-select {
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@media screen and (max-width: 950px) {
+  body {
+    background-size: 220vw, cover;
+  }
+
+  main {
+    margin-top: 0;
+    width: 60vw;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  main {
+    width: 80vw;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  main {
+    width: 100vw;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  :root {
+    --card-padding: 10px;
+  }
+
+  main {
+    width: 80vw;
+  }
+
+  main h2 {
+    font-size: 10px;
+  }
+
+  .countdown .figure {
+    width: 110px;
+    height: 95px;
+  }
+
+  .countdown .figure > span {
+    font-size: 3.55rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  main {
+    width: 100vw;
+  }
+}
